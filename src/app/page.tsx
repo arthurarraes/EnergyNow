@@ -7,7 +7,7 @@ import energiaeolica from "../images/energia-eolica.jpg"
 export default function Home() {
   return (
     <main>
-      <section className="bg-[url('../images/hero.jpg')] h-44 md:h-96 text-center text-white flex items-center justify-center">
+      <section className="bg-[url('../images/hero.jpg')] h-60 md:h-96 text-center text-white flex items-center justify-center">
       <div className="">
         <h1 className="text-xl md:text-4xl my-4 md:my-9">Simulador de Consumo</h1>
         <button className="border border-white rounded-md px-4 md:px-7 py-1 md:text-xl"><Link href="/calculadora">INICIAR</Link></button>
