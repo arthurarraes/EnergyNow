@@ -4,29 +4,46 @@ import { useState, useContext } from "react";
 import { AuthContext } from "@/app/context";
 
 export default function Calculadora() {
-  // Estados para armazenar os valores dos inputs e a média
-  const [watt1, setWatt1] = useState<number | string>("");
-  const [watt2, setWatt2] = useState<number | string>("");
-  const [watt3, setWatt3] = useState<number | string>("");
-  const [media, setMedia] = useState<number | null>(null);
+  // Iniciando os estados com valores numéricos 0
+  const [watt1, setWatt1] = useState<number>(0); 
+  const [watt2, setWatt2] = useState<number>(0); 
+  const [watt3, setWatt3] = useState<number>(0); 
+  const [media, setMedia] = useState<number | null>(null); 
   const [erro, setErro] = useState<string | null>(null);
 
   // Obter o usuário a partir do contexto
   const { user } = useContext(AuthContext);
 
+  // Função para lidar com a mudança dos valores dos inputs
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    const numero = Number(value); // Convertendo o valor para número
+
+    // Garantir que o valor seja um número válido
+    if (!isNaN(numero)) {
+      if (name === "watt1") {
+        setWatt1(numero);
+      } else if (name === "watt2") {
+        setWatt2(numero);
+      } else if (name === "watt3") {
+        setWatt3(numero);
+      }
+    }
+  };
+
   // Função para calcular a média
-  const calcularMedia = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     // Verificar se todos os campos foram preenchidos
-    if (watt1 === "" || watt2 === "" || watt3 === "") {
-      setErro("Por favor, preencha todos os campos antes de calcular a média.");
+    if (watt1 === 0 || watt2 === 0 || watt3 === 0) {
+      setErro("Por favor, preencha todos os campos com valores maiores que 0.");
       setMedia(null); // Limpar a média em caso de erro
       return;
     }
 
-    // Caso todos os campos estejam preenchidos, calcular a média
-    const watts = [watt1, watt2, watt3].map(Number);
+    // Calcular a média
+    const watts = [watt1, watt2, watt3];
     const mediaCalculada = watts.reduce((acc, watt) => acc + watt, 0) / watts.length;
     setErro(null); // Limpar a mensagem de erro
     setMedia(mediaCalculada);
@@ -34,21 +51,20 @@ export default function Calculadora() {
     // Se o usuário estiver autenticado, enviar os dados para a API
     if (user?.email) {
       try {
-        const resposta = await fetch("http://localhost:8080/api/dados", {
+        const resposta = await fetch("http://localhost:8080/gerenciamento/createGrup", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
             email: user.email,
-            watt1: watts[0],
-            watt2: watts[1],
-            watt3: watts[2],
+            watt1: watt1,
+            watt2: watt2,
+            watt3: watt3,
           }),
         });
-
-        if (!resposta.ok) {
-          throw new Error("Erro ao enviar os dados para a API.");
+        if(resposta.ok){
+          console.log(watt1, watt2, watt3, user.email)
         }
       } catch (erro) {
         console.error("Erro ao enviar os dados:", erro);
@@ -74,7 +90,7 @@ export default function Calculadora() {
         <section className="bg-white flex flex-col text-left justify-center items-start w-full md:w-5/12 h-auto m-7 p-8 rounded-md">
           <h1 className="text-3xl font-bold pb-2 mx-auto">Calculadora de Watts</h1>
           {erro && <p className="text-red-500 mt-2 mx-auto">{erro}</p>}
-          <form onSubmit={calcularMedia} className="py-4 w-full">
+          <form onSubmit={handleSubmit} className="py-4 w-full">
             <div className="p-2">
               <label htmlFor="watt1" className="block text-left">Potência Mês 1 (Watts)</label>
               <input
@@ -84,7 +100,7 @@ export default function Calculadora() {
                 placeholder="150"
                 className="border border-gray-400 p-1 px-2 rounded-md w-full"
                 value={watt1}
-                onChange={(e) => setWatt1(e.target.value)}
+                onChange={handleChange}
               />
             </div>
             <div className="p-2">
@@ -96,7 +112,7 @@ export default function Calculadora() {
                 placeholder="250"
                 className="border border-gray-400 p-1 px-2 rounded-md w-full"
                 value={watt2}
-                onChange={(e) => setWatt2(e.target.value)}
+                onChange={handleChange}
               />
             </div>
             <div className="p-2">
@@ -108,7 +124,7 @@ export default function Calculadora() {
                 placeholder="200"
                 className="border border-gray-400 p-1 px-2 rounded-md w-full"
                 value={watt3}
-                onChange={(e) => setWatt3(e.target.value)}
+                onChange={handleChange}
               />
             </div>
             <input
@@ -128,7 +144,7 @@ export default function Calculadora() {
               <div className="pt-5">
                 <h1 className="text-xl font-semibold">Recomendações:</h1>
                 <p className="text-gray-500">Mantenha o hábito de desligar aparelhos em standby.</p>
-                <p className="text-gray-500">Utilize lâmpadas LED de baixo consumo.</p>
+                <p className="text-gray-500">Investir em equipamentos eficientes pode ajudar a reduzir o consumo.</p>
               </div>
             </div>
           )}
