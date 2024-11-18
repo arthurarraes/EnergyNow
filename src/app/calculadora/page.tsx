@@ -58,14 +58,11 @@ export default function Calculadora() {
           },
           body: JSON.stringify({
             email: user.email,
-            watt1: watt1,
-            watt2: watt2,
-            watt3: watt3,
+            kWh1: watt1,
+            kWh2: watt2,
+            kWh3: watt3,
           }),
         });
-        if(resposta.ok){
-          console.log(watt1, watt2, watt3, user.email)
-        }
       } catch (erro) {
         console.error("Erro ao enviar os dados:", erro);
         setErro("Houve um erro ao enviar os dados para a API.");

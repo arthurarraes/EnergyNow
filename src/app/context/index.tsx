@@ -1,6 +1,5 @@
-'use client'
-
-import { createContext, useState } from "react";
+"use client"
+import { createContext, useState, useEffect } from "react";
 
 export type UserProps = {
     cep: string,
@@ -23,6 +22,14 @@ const AuthContext = createContext<AuthContextProps>({} as AuthContextProps);
 const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     const [user, setUser] = useState<UserProps | null>(null);
     const [error, setError] = useState<string | null>(null);
+
+    // Recuperar o user do localStorage quando o aplicativo for carregado
+    useEffect(() => {
+        const storedUser = localStorage.getItem('user');
+        if (storedUser) {
+            setUser(JSON.parse(storedUser)); // Restaurar o user a partir do localStorage
+        }
+    }, []);
 
     const login = async (credentials: { email: string; senha: string }) => {
         setError(null);
@@ -62,12 +69,15 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             };
     
             setUser(userFiltered);
+
+            // Armazenar o usuário no localStorage após o login
+            localStorage.setItem('user', JSON.stringify(userFiltered));
+
         } catch (error) {
             setError('Erro de conexão. Verifique sua rede e tente novamente.');
             console.log(error)
         }
     };
-    
 
     const register = async (userData: UserProps) => {
         setError(null);
@@ -95,6 +105,10 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
 
             const newUser = await registerResponse.json();
             setUser(newUser);
+
+            // Armazenar o usuário no localStorage após o registro
+            localStorage.setItem('user', JSON.stringify(newUser));
+
         } catch (error) {
             setError('Erro de conexão. Verifique sua rede e tente novamente.');
             console.log(error)
@@ -102,8 +116,11 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     };
 
     const logout = () => {
-        setUser({ nome: "", cep: "", cpf: "", email: "", senha: "" })
-        setError("");
+        setUser(null);
+        setError(null);
+
+        // Remover o usuário do localStorage ao fazer logout
+        localStorage.removeItem('user');
     };
 
     return (
