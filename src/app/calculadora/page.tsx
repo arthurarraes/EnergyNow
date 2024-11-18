@@ -1,6 +1,7 @@
-"use client"
+'use client'
 
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { AuthContext } from "@/app/context";
 
 export default function Calculadora() {
   // Estados para armazenar os valores dos inputs e a média
@@ -10,8 +11,11 @@ export default function Calculadora() {
   const [media, setMedia] = useState<number | null>(null);
   const [erro, setErro] = useState<string | null>(null);
 
+  // Obter o usuário a partir do contexto
+  const { user } = useContext(AuthContext);
+
   // Função para calcular a média
-  const calcularMedia = (e: React.FormEvent) => {
+  const calcularMedia = async (e: React.FormEvent) => {
     e.preventDefault();
 
     // Verificar se todos os campos foram preenchidos
@@ -26,6 +30,31 @@ export default function Calculadora() {
     const mediaCalculada = watts.reduce((acc, watt) => acc + watt, 0) / watts.length;
     setErro(null); // Limpar a mensagem de erro
     setMedia(mediaCalculada);
+
+    // Se o usuário estiver autenticado, enviar os dados para a API
+    if (user?.email) {
+      try {
+        const resposta = await fetch("http://localhost:8080/api/dados", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            email: user.email,
+            watt1: watts[0],
+            watt2: watts[1],
+            watt3: watts[2],
+          }),
+        });
+
+        if (!resposta.ok) {
+          throw new Error("Erro ao enviar os dados para a API.");
+        }
+      } catch (erro) {
+        console.error("Erro ao enviar os dados:", erro);
+        setErro("Houve um erro ao enviar os dados para a API.");
+      }
+    }
   };
 
   // Função para classificar o consumo

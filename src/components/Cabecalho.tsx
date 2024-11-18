@@ -9,7 +9,7 @@ import logo from '../images/logo.png'
 import { AuthContext } from '@/app/context'
 
 export default function Cabecalho() {
-  const {user} = useContext(AuthContext)
+  const { user } = useContext(AuthContext)
   const [menuAberto, setMenuAberto] = useState(false)
 
   const alternarMenu = () => setMenuAberto(!menuAberto)
@@ -20,7 +20,7 @@ export default function Cabecalho() {
         <div className="flex items-center justify-between h-16">
           <Link href="/">
             <Image
-            src={logo} alt="Logo"  className="w-16 mx-auto"/>
+              src={logo} alt="Logo" className="w-16 mx-auto" />
           </Link>
 
           {/* Navegação Desktop */}
@@ -28,13 +28,15 @@ export default function Cabecalho() {
             <Link href="/calculadora">
               Calculadora
             </Link>
-            <Link href="/simulador">
+            {/* Condicional para Simulador */}
+            <Link href={user?.email ? "/simulador" : "/registro"}>
               Simulador
             </Link>
             <Link href="/sobrenos">
               Sobre Nós
             </Link>
-            <Link href="/gerenciamento">
+            {/* Condicional para Gerenciamento */}
+            <Link href={user?.email ? "/gerenciamento" : "/registro"}>
               Gerenciamento
             </Link>
           </nav>
@@ -42,22 +44,16 @@ export default function Cabecalho() {
           {/* Botões de Autenticação ou Ícone de Perfil para Desktop */}
           <div className="hidden md:flex items-center space-x-2">
             {user?.email ? (
-              <button
-                className="p-2 rounded-full"
-              >
+              <button className="p-2 rounded-full">
                 <Link href="/perfil"><FaUser className="h-5 w-5" /></Link>
               </button>
             ) : (
               <>
-                <button
-                  className="px-4 py-2 bg-green-500 text-white rounded"
-                >
-                 <Link href="/login">Entrar</Link>
+                <button className="px-4 py-2 bg-green-500 text-white rounded">
+                  <Link href="/login">Entrar</Link>
                 </button>
-                <button
-                  className="px-4 py-2 bg-green-500 text-white rounded"
-                >
-                 <Link href="/registro">Registrar</Link>
+                <button className="px-4 py-2 bg-green-500 text-white rounded">
+                  <Link href="/registro">Registrar</Link>
                 </button>
               </>
             )}
@@ -76,31 +72,27 @@ export default function Cabecalho() {
               <Link href="/calculadora">
                 Calculadora
               </Link>
-              <Link href="/simulador">
+              {/* Condicional para Simulador */}
+              <Link href={user?.email ? "/simulador" : "/registro"}>
                 Simulador
               </Link>
               <Link href="/sobrenos">
                 Sobre Nós
               </Link>
-              <Link href="/gerenciamento">
+              {/* Condicional para Gerenciamento */}
+              <Link href={user?.email ? "/gerenciamento" : "/registro"}>
                 Gerenciamento
               </Link>
               {user?.email ? (
-                <button
-                  className="flex items-center px-4 py-2 "
-                >
+                <button className="flex items-center px-4 py-2 ">
                   <Link href="/perfil"><FaUser className="h-5 w-5 mr-2" /></Link>
                 </button>
               ) : (
                 <>
-                  <button
-                    className="w-full px-4 py-2 bg-green-500 text-white rounded"
-                  ><Link href="/login">Entrar</Link>
-                    
+                  <button className="w-full px-4 py-2 bg-green-500 text-white rounded">
+                    <Link href="/login">Entrar</Link>
                   </button>
-                  <button
-                    className="w-full px-4 py-2 bg-green-500 text-white rounded"
-                  >
+                  <button className="w-full px-4 py-2 bg-green-500 text-white rounded">
                     <Link href="/registro">Registrar</Link>
                   </button>
                 </>
