@@ -41,7 +41,7 @@ export default function DuvidasFrequentes() {
 
     return (
         <section id="ajuda" className="bg-gray-100 p-5 text-center">
-            <header className="text-lg md:text-2xl">Dúvidas Frequentes</header>
+            <header className="text-lg md:text-2xl mb-3">Dúvidas Frequentes</header>
             {duvidasFrequentes.map((i, index) => (
                 <div className="my-2 flex flex-col gap-2 p-2 px-6 w-11/12 md:w-3/4 mx-auto border-2 rounded-md border-sky-600 bg-white" key={i.id}>
                     <div className="flex items-center justify-between">

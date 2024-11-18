@@ -33,10 +33,10 @@ export default function SobreNos() {
                 <a className="text-lg text-blue-600 block text-center my-4" href="https://github.com/arthurarraes/challenge-react" target="_blank" rel="noopener noreferrer">
                     Repositório
                 </a>
-                <div className="grid grid-cols-3 gap-20 mx-5">
+                <div className="grid grid-cols-3 gap-10 mx-5">
                     {participantes.map((e) => (
                         <div className="flex flex-col items-center text-center" key={e.nome}>
-                            <Image src={e.imagem} alt={e.nome} width={100} height={100} />
+                            <Image src={e.imagem} alt={e.nome} width={150} height={150} />
                             <h1 className="text-lg font-medium">{e.nome}</h1>
                             <h1 className="text-lg">1TDSPK</h1>
                             <div>

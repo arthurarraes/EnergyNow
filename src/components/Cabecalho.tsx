@@ -24,7 +24,7 @@ export default function Cabecalho() {
           </Link>
 
           {/* Navegação Desktop */}
-          <nav className="hidden md:flex space-x-4">
+          <nav className="hidden md:flex space-x-4 text-lg">
             <Link href="/calculadora">
               Calculadora
             </Link>
