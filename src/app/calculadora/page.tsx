@@ -71,7 +71,7 @@ export default function Calculadora() {
   return (
     <div className="flex flex-col">
       <main className="flex justify-center items-center bg-gray-100 flex-1">
-        <section className="bg-white flex flex-col text-left justify-center items-start w-full md:w-5/12 h-auto m-3 p-8 rounded-md">
+        <section className="bg-white flex flex-col text-left justify-center items-start w-full md:w-5/12 h-auto m-7 p-8 rounded-md">
           <h1 className="text-3xl font-bold pb-2 mx-auto">Calculadora de Watts</h1>
           {erro && <p className="text-red-500 mt-2 mx-auto">{erro}</p>}
           <form onSubmit={calcularMedia} className="py-4 w-full">

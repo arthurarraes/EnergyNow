@@ -4,10 +4,10 @@ import { createContext, useState } from "react";
 
 export type UserProps = {
     cep: string,
-    telefone: string,
+    cpf: string,
     email: string,
     senha: string,
-    userName: string
+    nome: string
 }
 
 type AuthContextProps = {
@@ -55,10 +55,10 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
             const userData = await loginResponse.json();
             const userFiltered: UserProps = {
                 cep: userData.cep,
-                telefone: userData.telefone,
+                cpf: userData.cpf,
                 email: userData.email,
                 senha: userData.senha,
-                userName: userData.userName
+                nome: userData.nome
             };
     
             setUser(userFiltered);
@@ -102,7 +102,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     };
 
     const logout = () => {
-        setUser({ userName: "", cep: "", telefone: "", email: "", senha: "" })
+        setUser({ nome: "", cep: "", cpf: "", email: "", senha: "" })
         setError("");
     };
 

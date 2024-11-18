@@ -84,7 +84,7 @@ export default function Cabecalho() {
                 Gerenciamento
               </Link>
               {user?.email ? (
-                <button className="flex items-center px-4 py-2 ">
+                <button className="flex items-center px-4 py-2 mx-auto">
                   <Link href="/perfil"><FaUser className="h-5 w-5 mr-2" /></Link>
                 </button>
               ) : (
