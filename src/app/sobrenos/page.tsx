@@ -55,10 +55,10 @@ export default function SobreNos() {
             <section className="my-16 mx-10 text-center bg-gray-100 p-2 rounded-sm">
                 <header className="text-xl md:text-2xl">Sobre o Projeto</header>
                 <p className="text-lg font-normal my-4 indent-5">
-                    Bem-vindo ao nosso site! Somos um grupo de estudantes universitários apaixonados por tecnologia e inovação, colaborando com a Porto Seguro e a Oxigênio Aceleradora para trazer uma solução revolucionária para os proprietários de veículos.
+                A Energy Now é uma plataforma inovadora que visa transformar a maneira como consumimos energia, focando na gestão inteligente e sustentável do uso de eletricidade. Oferecendo uma solução prática e eficiente, a plataforma permite que residências e empresas monitorem seu consumo e adotem fontes de energia renovável, como solar e eólica.
                 </p>
                 <p className="text-lg font-normal my-4 indent-5">
-                    Nosso objetivo é simplificar a vida dos motoristas, fornecendo uma plataforma intuitiva e inteligente para diagnóstico e orçamento de peças automotivas. Combinando o poder da inteligência artificial com a expertise da Porto Seguro em seguros automotivos e a inovação da Oxigênio Aceleradora, estamos reinventando a maneira como os problemas dos carros são identificados e resolvidos.
+                Com ferramentas como simuladores de consumo e orientações personalizadas, a Energy Now empodera seus usuários a reduzirem custos, aumentarem a eficiência energética e contribuírem para um futuro mais sustentável. Ao mesmo tempo, facilita o acesso a empresas de energia limpa, conectando consumidores a soluções que promovem um mercado de energia mais responsável.
                 </p>
                 {/* <figure className="my-5">
                     <Image className='mx-auto' src={projeto} alt="Sobre o projeto" width={500} height={300} />

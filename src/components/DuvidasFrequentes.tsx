@@ -6,30 +6,31 @@ export default function DuvidasFrequentes() {
     const duvidasFrequentes = [
         {
             id: 1,
-            pergunta: "Como a IA determina quais problemas meu veículo pode estar apresentando?",
-            resposta: "A IA utiliza informações fornecidas pelo usuário sobre os sintomas e consequências do problema no veículo, analisando esses dados com um banco de dados de problemas comuns e suas causas. Ela usa algoritmos avançados para comparar os sintomas reportados com padrões de falhas conhecidos, gerando uma estimativa sobre o que pode estar causando o problema."
+            pergunta: "Como posso começar a usar a Energy Now?",
+            resposta: "Para começar a usar a Energy Now, basta se cadastrar na plataforma e inserir seus dados de consumo de energia. O sistema calculará seu consumo atual e fornecerá orientações personalizadas para otimizar o uso de eletricidade e reduzir seus gastos."
         },
         {
             id: 2,
-            pergunta: "Quão preciso é o custo estimado para peças e serviços fornecido pela IA?",
-            resposta: "A precisão da estimativa de custo depende da qualidade e atualização das informações que a IA usa. A IA baseia suas estimativas em dados de mercado atualizados e informações sobre o custo de peças e mão de obra em sua região. No entanto, o custo final pode variar devido a fatores como disponibilidade de peças e políticas de preços das oficinas."
+            pergunta: "A Energy Now ajuda a reduzir o consumo de energia sem comprometer o conforto?",
+            resposta: "Sim! A plataforma oferece sugestões personalizadas para reduzir o consumo de energia de maneira eficiente, garantindo que o conforto e a qualidade de vida não sejam comprometidos. As dicas incluem ajustes simples no comportamento e no uso de equipamentos."
         },
         {
             id: 3,
-            pergunta: "A IA pode substituir o diagnóstico feito por um mecânico qualificado?",
-            resposta: "A IA é uma ferramenta para auxiliar no diagnóstico, não um substituto completo para a experiência de um mecânico qualificado. Ela pode fornecer uma análise inicial e estimativas úteis, mas recomenda-se que um profissional examine o veículo para uma confirmação final e para realizar reparos complexos."
+            pergunta: "A Energy Now oferece suporte para a instalação de sistemas de energia renovável?",
+            resposta: "Sim, a plataforma conecta você com empresas especializadas em soluções de energia renovável. Você pode consultar e até mesmo instalar dispositivos como painéis solares ou sistemas eólicos para tornar sua casa ou empresa mais sustentável."
         },
         {
             id: 4,
-            pergunta: "Como a IA lida com problemas que não estão bem documentados ou são menos comuns?",
-            resposta: "A IA é projetada para aprender e se adaptar com o tempo. Para problemas menos comuns ou não bem documentados, ela usa dados históricos e feedback contínuo para melhorar suas previsões. Se um problema não for identificado com precisão, o sistema pode solicitar uma avaliação adicional por parte de um mecânico."
+            pergunta: "Como o simulador de consumo de energia funciona?",
+            resposta: "O simulador de consumo permite que você insira dados sobre seus dispositivos e horários de uso de energia. Com essas informações, o sistema estima seu consumo mensal e oferece recomendações para reduzir os gastos, com base em seu perfil de uso."
         },
         {
             id: 5,
-            pergunta: "Quanto tempo leva para a IA fornecer uma estimativa completa para o reparo?",
-            resposta: "O tempo necessário para gerar uma estimativa varia de acordo com a complexidade do problema e a quantidade de informações fornecidas. Em geral, a IA pode fornecer uma estimativa inicial em poucos minutos, mas para uma avaliação mais detalhada e precisa, pode ser necessário um pouco mais de tempo, especialmente se o problema for complexo."
+            pergunta: "A Energy Now é fácil de usar, mesmo para quem não tem conhecimento técnico?",
+            resposta: "Sim! A plataforma foi desenvolvida com uma interface simples e intuitiva, pensada para todos os tipos de usuários. Mesmo quem não tem conhecimentos técnicos em energia elétrica pode navegar facilmente e aproveitar os recursos disponíveis."
         }
     ];
+    
 
     const [respostasVisiveis, setRespostasVisiveis] = useState(Array(duvidasFrequentes.length).fill(false));
 
