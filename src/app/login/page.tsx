@@ -18,7 +18,6 @@ export default function Login() {
 
     useEffect(() => {
         setErro("");
-        console.log(error)
     }, []);
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
