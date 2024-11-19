@@ -51,7 +51,7 @@ export default function Calculadora() {
     // Se o usuário estiver autenticado, enviar os dados para a API
     if (user?.email) {
       try {
-        const resposta = await fetch("http://localhost:8080/gerenciamento/createGrup", {
+         await fetch("http://localhost:8080/gerenciamento/createGrup", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
