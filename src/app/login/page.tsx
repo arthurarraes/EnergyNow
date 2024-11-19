@@ -21,12 +21,6 @@ export default function Login() {
         console.log(error)
     }, []);
 
-    // useEffect(() => {
-    //     if (error) {
-    //         setErro(error); // Atualiza o erro quando o contexto for atualizado
-    //     }
-    // }, [error]);
-
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const { name, value } = e.target;
         setLogar({ ...logar, [name]: value });

@@ -54,8 +54,8 @@ export default function Gerenciamento() {
       setChartData(transformedData)
 
       // Calculate total savings
-      const totalHabitSavings = economiaData.reduce((sum: any, item: { economiaE: any }) => sum + item.economiaE, 0)
-      const totalCleanSavings = economiaData.reduce((sum: any, item: { economiaR: any }) => sum + item.economiaR, 0)
+      const totalHabitSavings = economiaData.reduce((sum: number, item: { economiaE: number }) => sum + item.economiaE, 0)
+      const totalCleanSavings = economiaData.reduce((sum: number, item: { economiaR: number }) => sum + item.economiaR, 0)
       setTotalSavings({ habit: Number(totalHabitSavings.toFixed(2)), clean: Number(totalCleanSavings.toFixed(2)) })
 
       // Calculate consumption trend

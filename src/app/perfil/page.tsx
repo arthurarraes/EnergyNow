@@ -6,7 +6,7 @@ import { AuthContext } from "../context";
 
 
 export default function Perfil() {
-  const { user, logout, error } = useContext(AuthContext)
+  const { user, logout } = useContext(AuthContext)
 
   return (
     <section className="p-8 flex justify-center bg-gray-100">
